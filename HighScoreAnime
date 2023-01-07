@@ -1,0 +1,39 @@
+using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
+
+public class HighScoreAnime : MonoBehaviour {
+
+	public Image awardObject;
+	public bool reverseAnime;
+	public bool stopAnime;
+	float hw;
+	// Use this for initialization
+	void Start () {
+		hw = 1.1f;
+		reverseAnime = false;
+		stopAnime = false;
+
+	}
+
+	// Update is called once per frame
+	void Update () {
+
+		if(stopAnime) { return; };
+
+		if (!reverseAnime) {
+			hw += 0.3f;
+			awardObject.transform.localScale = new Vector2 (hw, hw);
+			if(hw>8f) { reverseAnime = true; }; 
+		}
+		else {
+			hw -= 0.3f;
+			awardObject.transform.localScale = new Vector2 (hw, hw);
+			if(hw < 2.8f) {	stopAnime = true;}
+
+		}
+
+
+
+	}
+}
